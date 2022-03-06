@@ -1,0 +1,7 @@
+Terminando el proceso de entrada:
+-login, validacion de usuario funcionando
+-registro usuario, validacion, insercion en bbdd y bienvenida funcionando
+
+Falta: olvido clave de acceso, enviar correo al usuario y cambio de password y el tema de sesiones
+
+

@@ -1,0 +1,103 @@
+
+ :root{
+      --amarillo1:#fff0a9;
+  --amarillo2:#ffe567;
+  --lila:#da97ff;
+  --rosa:#ffd5ec;
+  --azul1:#66edff;
+  --azul2:#a3ffff;
+
+  --lila1:#77469a;
+  --rosa1:#ab368f;
+  --gris1:#32322f;
+  --gris2: #444440;
+  --blanco1:#f8f9fc;
+  --blanco2:#fefffc;
+  --shadow: 0 8px 8px;
+  --color_shadow: #00000033;
+  --fuente1: 'Zen Antique Soft', serif;
+
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    
+   
+}
+
+.menu a:hover{
+  color: var(--azul1);
+}  
+.menu ul li a:hover{
+  color: var(--amarillo1);
+}
+/*****************  FUENTES  *******************/
+
+h1, p, h1 a, h3, h3 a  {
+  color: white; 
+    color: var(--blanco2);
+    text-shadow: 2px 5px 10px black;
+
+}  
+.menu li a{
+     color: white;  
+     font-size: 200%;
+     margin: 2em;
+     text-shadow: 2px 2px 5px black;
+}
+/**************** SECCIONES*************/
+
+
+ #derecha{
+  
+  background-image: linear-gradient(35deg, #66edff,#da97ff );  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ 
+
+
+  } 
+ #izquierda{
+
+  background-color: #77469a;
+  z-index: 1;
+}
+
+
+
+/****************    media querys *********************/
+
+@media (max-width:768px){
+  h1{
+    font-size: 350%;
+  }
+  h3{
+    font-size: 100%;
+  }
+  h5 {
+    font-size: 100%;
+  }
+  #inicio{
+    display: block;
+    width: 100%;
+
+  }
+  #izquierda{
+    position: relative;
+    width: 100%;
+    
+    
+  }
+
+
+} 
+
+
+
+
+
+

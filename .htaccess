@@ -1,0 +1,12 @@
+# Permite reescribir las peticiones de URL
+RewriteEngine On
+
+#RewriteBase http://jmlcasa.dyndns.info/~igarciaz01/
+#RewriteBase http://localhost/e-local/
+
+# Si el archivo y la carpeta no existen hacer siguiente reescritura
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redirecciona todas las peticiones a index
+RewriteRule ^ index.php [QSA,L]
