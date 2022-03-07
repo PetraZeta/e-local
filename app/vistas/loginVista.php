@@ -6,34 +6,30 @@
             <div class="col-md-6 col-lg-5 d-none  d-md-block">
                 <img src="<?php print BASE_URL; ?>public/img/modelo3.jpg" alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
             </div>
-            <div class="col-md-6 col-lg-7 d-flex  align-items-center">
+            <div id="formulario" class="col-md-6 col-lg-7 d-flex  align-items-center">
                 <div class="card-body px-4 p-lg-5 text-black">
 
                     <!--      LOGIN      -->
                     <h1 class="fw-bold text-center p-2 m-2">LOGIN</h1>
 
-                    <?php include_once("plantilla/errores.php"); ?>
+                    <!--   <?php include_once("plantilla/errores.php"); ?> -->
 
-                    <form action="<?php print BASE_URL; ?>login/verifica/" method="POST">
+                    <form action="<?php print BASE_URL; ?>login/verifica/" method="POST" id="formLogin">
 
                         <div class="row py-3">
                             <div class="col-12 col-md-6 pb-3">
                                 <label for="usuario"></label>
-                                <input type="text" class="form-control" id="usuario" placeholder="Correo electrónico" name="usuario" value='<?php isset($datos["data"]["usuario"]) ? print $datos["data"]["usuario"] : ""; ?>' required>
+                                <input type="text" class="form-control" id="usuario" placeholder="Correo electrónico" name="usuario" required>
                             </div>
 
                             <div class="col-12 col-md-6">
                                 <label for="clave"></label>
-                                <input type="password" class="form-control" id="clave" placeholder="Contraseña" name="clave" value='<?php isset($datos["data"]["clave"]) ? print $datos["data"]["clave"] : ""; ?>' required>
+                                <input type="password" class="form-control" id="clave" placeholder="Contraseña" name="clave" required>
                             </div>
                             <div class="form-group pt-1 my-2 mx-2 ">
                                 <input type="submit" class="btn btn-dark btn-lg btn-block" value="Entrar" name="login"><br>
                                 <div class="pb-lg-2">
-                                    <input type="checkbox" name="recordar" <?php
-                                                                            if (isset($datos['data']['recordar'])) {
-                                                                                if ($datos['data']['recordar'] == "on") print "checked";
-                                                                            }
-                                                                            ?>>
+                                    <input type="checkbox" name="recordar">
                                     <label for="recordar" class="small text-muted py-2">Recordar</label>
                                 </div>
                             </div>
@@ -48,13 +44,46 @@
                         </div>
                     </div>
                 </div>
+                <div id="exito" style="display:none">
+                    Sus datos han sido recibidos con éxito.
+                </div>
+                <div id="fracaso" style="display:none">
+                    Se ha producido un error durante el envío de datos.
+                </div>
 
             </div>
         </div>
     </div> <!-- FIN ROW -->
-
-
-
 </div>
-
 <?php include_once("plantilla/pie.php"); ?>
+
+<script type="text/javascript">
+    function validaForm() {
+        // Campos de texto
+        if ($("#usuario").val() == "") {
+            alert("El campo Usuario no puede estar vacío.");
+            $("#usuario").focus(); // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
+            return false;
+        }
+        if ($("#clave").val() == "") {
+            alert("El campo Contraseña no puede estar vacío.");
+            $("#clave").focus();
+            return false;
+        }
+        return true; // Si todo está correcto
+    }
+    $(document).ready(function() {
+        $('#enviar').click(function() {
+            if (validaForm()) {
+                $.post("", $("#formLogin").serialize(), function(res) {
+                    $("#formulario").fadeOut("slow"); // Hacemos desaparecer el div "formulario" con un efecto fadeOut lento.
+                    if (res == 1) {
+                        $("#exito").delay(500).fadeIn("slow"); // Si hemos tenido éxito, hacemos aparecer el div "exito" con un efecto fadeIn lento tras un delay de 0,5 segundos.
+                    } else {
+                        $("#fracaso").delay(500).fadeIn("slow"); // Si no, lo mismo, pero haremos aparecer el div "fracaso"
+                    }
+                });
+            }
+        });
+    });
+</script>

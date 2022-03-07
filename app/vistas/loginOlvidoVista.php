@@ -7,15 +7,13 @@
             </div>
             <div class="col-md-6 col-lg-7 d-flex  align-items-center">
                 <div class="card-body px-4 p-lg-5 text-black">
-                    <div class="col-md-6 col-lg-5 d-none  d-md-block">
-                        <img src="imagen/modelo3.jpg" alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
-                    </div>
-                    <div class="col-md-6 col-lg-7 d-flex  align-items-center">
+                   
+                   
                         <div class="card-body p-4 p-lg-5 text-black">
                             <!--      LOGIN OLVIDO     -->
-                            <h1 class="fw-bold text-center p-2 m-2"><?php print $datos["subtitulo"]; ?></h1>
+                            <h1 class="fw-bold text-center p-2 m-2"><!-- <?php print $datos["subtitulo"]; ?> --></h1>
                             <?php include_once("plantilla/errores.php"); ?>
-                            <form action="<?php print RUTA; ?>login/olvido/" method="POST">
+                            <form action="<?php print BASE_URL; ?>login/olvido/" method="POST">
 
                                 <div class="row py-3">
                                     <div class="col-10 m-auto pb-3">

@@ -204,7 +204,7 @@ class Login extends Controlador{
             $usuario = isset($_POST["usuario"])?$_POST["usuario"]:"";
             $clave = isset($_POST["clave"])?$_POST["clave"]:"";
             $recordar = isset($_POST["recordar"])?"on":"off";
-            $errores = $this->cargaModelo->verificar($usuario, $clave);
+         //   $errores = $this->cargaModelo->verificar($usuario, $clave);
             //recuerdame
             $valor = $usuario."|".$clave;
         
@@ -215,11 +215,12 @@ class Login extends Controlador{
             }
             setcookie("datos", $valor, $fecha,BASE_URL); //creo una cookie con los datos, caducidad y ruta
             //recibir datos
-            $data=[
+           /*  $data=[
                 "usuario" => $usuario,
                 "clave"=>$clave,
                 "recordar"=>$recordar
-            ];
+            ]; */
+          
             //validar
             if (empty($errores)) {
                 //si no hay errores, iniciamos sesion y enviamos a tienda
@@ -227,13 +228,13 @@ class Login extends Controlador{
                 $sesion=new Sesion();
         //        $sesion->iniciarLogin($data);
                 //
-                header("Location: ".BASE_URL."tiendaVista");
+                header("Location: ".BASE_URL."inicioUsuarioVista");
             } else {
                 $datos=[
                     "titulo" => "Login",
                     "menu" => false,
                     "errores" => $errores,
-                    "data" => $data
+                  //  "data" => $data
                 ];
                 $this->cargaVista("loginVista", $datos);
             }

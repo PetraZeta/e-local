@@ -35,6 +35,7 @@ class LoginModelo{
         
     }
     function validarCorreo($email){
+        var_dump($email);
         $sql="SELECT * FROM usuario WHERE email='".$email."'";
         $data = $this->db->query($sql);
         return (count($data)==0)?true:false;

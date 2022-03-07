@@ -24,7 +24,6 @@ abstract class Controlador{
     {
     }
     
-
     protected function cargaVista($vista = "", $params = array())
     {
         $this->vista = new Vista($vista, $params);
@@ -37,7 +36,7 @@ abstract class Controlador{
             include $path_model;
             return new $modelo;
         } else {
-            throw new Exception("Modelo no existe");
+            throw new Exception("El modelo no existe");
         }
     }
 
